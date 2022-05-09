@@ -3,10 +3,10 @@ package com.abdykadyr.newcocktailapp.domain.entities
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class ListOfCocktails(
+data class ListOfIngredientFilters(
 
     @SerializedName("drinks")
     @Expose
-    val data: List<CocktailInfo>? = null
+    val ingredientsFilters: List<IngredientFilter>? = null
 
 )

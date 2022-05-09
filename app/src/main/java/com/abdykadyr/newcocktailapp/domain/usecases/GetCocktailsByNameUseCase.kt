@@ -1,4 +1,11 @@
 package com.abdykadyr.newcocktailapp.domain.usecases
 
-class GetCocktailsByNameUseCase {
+import com.abdykadyr.newcocktailapp.domain.entities.ListOfCocktails
+import com.abdykadyr.newcocktailapp.domain.repository.Repository
+
+class GetCocktailsByNameUseCase(private val repository: Repository) {
+
+    operator fun invoke(nameDrink: String): ListOfCocktails {
+        return repository.getCocktailsByName(nameDrink)
+    }
 }

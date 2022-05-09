@@ -1,6 +1,6 @@
 package com.abdykadyr.newcocktailapp.data.api
 
-import com.abdykadyr.newcocktailapp.domain.entities.CocktailFullInfo
+import com.abdykadyr.newcocktailapp.domain.entities.CocktailInfo
 import com.abdykadyr.newcocktailapp.domain.entities.IngredientInfo
 import com.abdykadyr.newcocktailapp.domain.entities.ListOfCocktails
 import com.abdykadyr.newcocktailapp.domain.entities.ListOfIngredients
@@ -28,7 +28,7 @@ interface ApiService {
     @GET(GET_COCKTAIL_BY_ID)
     fun getFullCocktailInfo(
         @Query(QUERY_PARAM_COCKTAIL_ID) idDrink: Int
-    ): Single<CocktailFullInfo>
+    ): Single<CocktailInfo>
 
     @GET(GET_INGREDIENT_BY_ID)
     fun getFullIngredientInfo(

@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import com.abdykadyr.newcocktailapp.R
 
+
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
