@@ -24,6 +24,10 @@ data class CocktailFullInfo(
     @Expose
     val strTags: String? = null,
 
+    @SerializedName("strCategory")
+    @Expose
+    val strCategory: String? = null,
+
     @SerializedName("strIBA")
     @Expose
     val strIBA: String? = null,
