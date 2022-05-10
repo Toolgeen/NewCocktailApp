@@ -20,13 +20,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val disposable: Disposable =  ApiFactory.apiService.getCocktailsByName("margarita")
+        val disposable = ApiFactory.apiService.getCocktailsByFirstLetter("A")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                       Log.d("TEST_OF_LOADING_DATA", it.toString())
+                it?.let { it.toString() }
             },{
-                Log.d("TEST_OF_LOADING_DATA", "failure")
+                Log.d("TEST_OF_LOADING_DATA", "failure to load data")
             })
         compositeDisposable.add(disposable)
     }
@@ -36,5 +36,10 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu,menu)
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
     }
 }

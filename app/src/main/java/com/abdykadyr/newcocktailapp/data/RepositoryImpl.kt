@@ -1,4 +1,5 @@
 package com.abdykadyr.newcocktailapp.data
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.abdykadyr.newcocktailapp.data.api.ApiFactory
@@ -14,7 +15,7 @@ import java.lang.RuntimeException
 object RepositoryImpl : Repository {
 
     val compositeDisposable = CompositeDisposable()
-    private lateinit var listOfCocktails: ListOfCocktails
+    private var listOfCocktails: ListOfCocktails = ListOfCocktails()
     private lateinit var listOfIngredients: ListOfIngredients
     private lateinit var listOfIngredientFilters: ListOfIngredientFilters
     private lateinit var listOfCategoriesFilters: ListOfCategoriesFilters
@@ -34,7 +35,7 @@ object RepositoryImpl : Repository {
                 Log.d("TEST_OF_LOADING_DATA", "failure to load data")
             })
         compositeDisposable.add(disposable)
-        return listOfCocktails?.listOfCocktails
+        return listOfCocktails.listOfCocktails
     }
 
     override fun getCocktailsByName(nameDrink: String): List<CocktailInfo>? {

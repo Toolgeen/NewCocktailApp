@@ -47,6 +47,8 @@ interface ApiService {
         private const val QUERY_PARAM_INGREDIENT_NAME = "cocktail_name"
         private const val QUERY_PARAM_COCKTAIL_NAME = "cocktail_name"
         private const val QUERY_PARAM_FIRST_LETTER = "first_letter"
+
+        //TODO: not completed
         private const val QUERY_PARAM_COCKTAIL_ID = "first_letter"
         private const val QUERY_PARAM_INGREDIENT_ID = "first_letter"
 

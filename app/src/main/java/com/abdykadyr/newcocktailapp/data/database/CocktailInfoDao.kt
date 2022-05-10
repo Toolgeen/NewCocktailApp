@@ -10,7 +10,7 @@ import com.abdykadyr.newcocktailapp.domain.entities.CocktailInfo
 @Dao
 interface CocktailInfoDao {
 
-    @Query("SELECT * FROM full_cocktail_list strDrink ORDER BY " )
+    @Query("SELECT * FROM full_cocktail_list ORDER BY strDrink")
     fun getCocktailList(): LiveData<List<CocktailInfo>>
 
     @Query("SELECT * FROM full_cocktail_list WHERE idDrink == :idDrinkSearch" )
