@@ -6,7 +6,7 @@ import com.abdykadyr.newcocktailapp.domain.repository.Repository
 
 class GetListOfCategoriesUseCase(private val repository: Repository) {
 
-    operator fun invoke(categoryFilter: CategoryFilter) : ListOfCategoriesFilters {
+    operator fun invoke(categoryFilter: CategoryFilter) : List<CategoryFilter>? {
         return repository.getListOfCategories(categoryFilter)
     }
 }

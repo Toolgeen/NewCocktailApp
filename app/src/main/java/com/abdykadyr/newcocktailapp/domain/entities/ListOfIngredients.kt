@@ -8,5 +8,5 @@ data class ListOfIngredients (
 
     @SerializedName("ingredients")
     @Expose
-    val data: List<IngredientInfo>? = null
+    val ingredients: List<IngredientInfo>? = null
 )

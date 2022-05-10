@@ -6,7 +6,7 @@ import com.abdykadyr.newcocktailapp.domain.repository.Repository
 
 class GetListOfAlcoholicUseCase(private val repository: Repository) {
 
-    operator fun invoke(alcoholicFilter: AlcoholicFilter) : ListOfAlcoholicFilters {
+    operator fun invoke(alcoholicFilter: AlcoholicFilter) : List<AlcoholicFilter>? {
         return repository.getListOfAlcoholic(alcoholicFilter)
     }
 }
