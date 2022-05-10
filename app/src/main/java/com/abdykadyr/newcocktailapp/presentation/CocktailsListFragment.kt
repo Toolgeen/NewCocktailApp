@@ -12,17 +12,12 @@ import java.lang.RuntimeException
 
 class CocktailsListFragment : Fragment() {
 
-
     private lateinit var viewModel: CocktailsListViewModel
 
     private var _binding: FragmentCocktailsListBinding? = null
     val binding: FragmentCocktailsListBinding
         get() = _binding ?: throw RuntimeException("FragmentCocktailsListBinding == null")
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +33,8 @@ class CocktailsListFragment : Fragment() {
         val adapter = CocktailListAdapter()
         binding.rvCocktailList.adapter = adapter
         viewModel = ViewModelProvider(this)[CocktailsListViewModel::class.java]
-        viewModel.getCocktailByName("negroni")
-        viewModel.cocktailList.observe(viewLifecycleOwner) {
-            adapter.cocktailListDto = it
+        viewModel.cocktailInfoList.observe(viewLifecycleOwner) {
+            adapter.cocktailList = it
         }
 
     }

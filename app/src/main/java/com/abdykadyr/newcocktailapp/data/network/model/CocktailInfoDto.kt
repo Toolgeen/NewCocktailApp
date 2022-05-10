@@ -1,12 +1,10 @@
-package com.abdykadyr.newcocktailapp.data.model
+package com.abdykadyr.newcocktailapp.data.network.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-
-@Entity(tableName = "full_cocktail_list")
 
 data class CocktailInfoDto(
 

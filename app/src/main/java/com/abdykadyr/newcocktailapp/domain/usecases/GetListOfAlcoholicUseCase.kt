@@ -5,6 +5,6 @@ import com.abdykadyr.newcocktailapp.domain.entities.AlcoholicFilter
 
 class GetListOfAlcoholicUseCase(private val repository: Repository) {
 
-    operator fun invoke(alcoholicFilter: AlcoholicFilter) =
+    suspend operator fun invoke(alcoholicFilter: AlcoholicFilter) =
         repository.getListOfAlcoholic(alcoholicFilter)
 }

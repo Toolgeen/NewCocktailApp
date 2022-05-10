@@ -4,5 +4,5 @@ import com.abdykadyr.newcocktailapp.domain.repository.Repository
 
 class GetIngredientByNameUseCase(private val repository: Repository) {
 
-    operator fun invoke(nameIngredient : String) = repository.getIngredientByName(nameIngredient)
+    suspend operator fun invoke(nameIngredient : String) = repository.getIngredientByName(nameIngredient)
 }

@@ -2,30 +2,32 @@ package com.abdykadyr.newcocktailapp.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.abdykadyr.newcocktailapp.data.RepositoryImpl
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import com.abdykadyr.newcocktailapp.data.repository.RepositoryImpl
 import com.abdykadyr.newcocktailapp.data.database.AppDatabase
+import com.abdykadyr.newcocktailapp.domain.entities.CocktailInfo
+import com.abdykadyr.newcocktailapp.domain.usecases.GetCocktailByIdUseCase
 import com.abdykadyr.newcocktailapp.domain.usecases.GetCocktailsByNameUseCase
+import com.abdykadyr.newcocktailapp.domain.usecases.LoadDataFromDbUseCase
+import kotlinx.coroutines.launch
 
 class CocktailsListViewModel(application: Application): AndroidViewModel(application) {
 
-    private val db = AppDatabase.getInstance(application)
-    private val repository = RepositoryImpl
-    val cocktailList = db.cocktailInfoDAO().getCocktailList()
+    private val repository = RepositoryImpl(application)
 
-    private val getCocktailsByFirstLetterUseCase = GetCocktailsByFirstLetterUseCase(repository)
     private val getCocktailsByNameUseCase = GetCocktailsByNameUseCase(repository)
+    private val getCocktailByIdUseCase = GetCocktailByIdUseCase(repository)
+    private val loadDataFromDbUseCase = LoadDataFromDbUseCase(repository)
 
-    fun getCocktailByFistLetter(letter : String) {
-        getCocktailsByFirstLetterUseCase(letter)?.let { db.cocktailInfoDAO().insertCocktailList(it) }
+    val cocktailInfoList = loadDataFromDbUseCase()
+
+    fun getCocktailInfo(idDrink: Int) = getCocktailByIdUseCase(idDrink)
+
+    init {
+        viewModelScope.launch { getCocktailsByNameUseCase("A")
+            TODO("just test, launch is not ended")
+        }
+        loadDataFromDbUseCase()
     }
-
-    fun getCocktailByName(name : String) {
-        getCocktailsByNameUseCase(name,db)?.let { db.cocktailInfoDAO().insertCocktailList(it) }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        repository.compositeDisposable.dispose()
-    }
-
 }

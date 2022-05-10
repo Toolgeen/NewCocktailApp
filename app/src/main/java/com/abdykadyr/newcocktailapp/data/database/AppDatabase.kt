@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.abdykadyr.newcocktailapp.data.model.CocktailInfoDto
+import com.abdykadyr.newcocktailapp.data.network.model.CocktailInfoDto
 
-@Database(entities = [CocktailInfoDto::class], version = 1, exportSchema = false)
+@Database(entities = [CocktailInfoDbModel::class], version = 1, exportSchema = false)
 
 abstract class AppDatabase : RoomDatabase() {
 

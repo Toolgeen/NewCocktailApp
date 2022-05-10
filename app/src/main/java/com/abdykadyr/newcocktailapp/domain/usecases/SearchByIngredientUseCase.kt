@@ -4,6 +4,6 @@ import com.abdykadyr.newcocktailapp.domain.repository.Repository
 
 class SearchByIngredientUseCase(private val repository: Repository) {
 
-    operator fun invoke(strIngredient: String) =
+    suspend operator fun invoke(strIngredient: String) =
         repository.searchByIngredient(strIngredient)
 }
