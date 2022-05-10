@@ -1,10 +1,5 @@
 package com.abdykadyr.newcocktailapp.domain.entities
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
-
 
 data class CocktailInfo(
 

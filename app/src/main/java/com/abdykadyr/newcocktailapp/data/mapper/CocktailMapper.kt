@@ -2,7 +2,10 @@ package com.abdykadyr.newcocktailapp.data.mapper
 
 import com.abdykadyr.newcocktailapp.data.database.CocktailInfoDbModel
 import com.abdykadyr.newcocktailapp.data.network.model.*
+import com.abdykadyr.newcocktailapp.domain.entities.AlcoholicFilter
+import com.abdykadyr.newcocktailapp.domain.entities.CategoryFilter
 import com.abdykadyr.newcocktailapp.domain.entities.CocktailInfo
+import com.abdykadyr.newcocktailapp.domain.entities.IngredientFilter
 
 class CocktailMapper {
 
@@ -90,14 +93,26 @@ class CocktailMapper {
         strMeasure15 = dbModel.strMeasure15
     )
 
-    fun mapAlcoholicFilterContainerToFilters(dto: AlcoholicFilterContainerDto) =
+    fun mapAlcoholicFilterContainerToFiltersDto(dto: AlcoholicFilterContainerDto) =
         dto.alcoholicFilterDtos
 
-    fun mapCategoriesFilterContainerToFilters(dto: CategoriesFilterContainerDto) =
+    fun mapAlcoholicFilterDtoToFilter(dto: AlcoholicFilterDto) = AlcoholicFilter (
+        strAlcoholic = dto.alcoholicFilter
+            )
+
+    fun mapCategoriesFilterContainerToFiltersDto(dto: CategoriesFilterContainerDto) =
         dto.categoriesFilterDtos
 
-    fun mapIngredientFilterContainerToFilters(dto: IngredientFilterContainerDto) =
+    fun mapCategoryFilterDtoToFilter(dto: CategoryFilterDto) = CategoryFilter (
+        strCategory = dto.strCategory
+    )
+
+    fun mapIngredientFilterContainerToFiltersDto(dto: IngredientFilterContainerDto) =
         dto.ingredientsFilterDtos
+
+    fun mapIngredientFilterDtoToFilter(dto: IngredientFilterDto) = IngredientFilter (
+        strIngredient = dto.ingredientFilter
+    )
 
     fun mapListOfCocktailsContainerToListOfCocktailsDto(dto: ListOfCocktailsContainerDto) =
         dto.listOfCocktailDtos

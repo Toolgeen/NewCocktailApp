@@ -5,6 +5,5 @@ import com.abdykadyr.newcocktailapp.domain.repository.Repository
 
 class GetListOfIngredientsUseCase(private val repository: Repository) {
 
-    suspend operator fun invoke(ingredientFilter: IngredientFilter) =
-        repository.getListOfIngredients(ingredientFilter)
+    suspend operator fun invoke() = repository.getListOfIngredients()
 }

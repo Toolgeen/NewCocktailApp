@@ -9,9 +9,11 @@ interface Repository {
     fun loadDataFromDb() : LiveData<List<CocktailInfo>>
     suspend fun getCocktailsByName(nameDrink: String) : LiveData<List<CocktailInfo>>
     suspend fun getIngredientByName(nameIngredient : String) : LiveData<IngredientInfo>
-    suspend fun getListOfAlcoholic(alcoholicFilter: AlcoholicFilter) : List<AlcoholicFilter>
-    suspend fun getListOfCategories(categoryFilter: CategoryFilter) : List<CategoryFilter>
-    suspend fun getListOfIngredients(ingredientFilter: IngredientFilter) : List<IngredientFilter>
-    suspend fun searchByIngredient(strIngredient: String) : LiveData<CocktailInfo>
+    suspend fun getListOfAlcoholic() : List<AlcoholicFilter>
+    suspend fun getListOfCategories() : List<CategoryFilter>
+    suspend fun getListOfIngredients() : List<IngredientFilter>
+    suspend fun searchByIngredient(ingredientFilter: IngredientFilter) : LiveData<List<CocktailInfo>>
+    suspend fun searchByAlcoholic(alcoholicFilter: AlcoholicFilter) : LiveData<List<CocktailInfo>>
+    suspend fun searchByCategory(categoryFilter: CategoryFilter) : LiveData<List<CocktailInfo>>
 
 }

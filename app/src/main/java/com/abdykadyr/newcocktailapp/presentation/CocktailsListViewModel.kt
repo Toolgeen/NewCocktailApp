@@ -24,6 +24,12 @@ class CocktailsListViewModel(application: Application): AndroidViewModel(applica
 
     fun getCocktailInfo(idDrink: Int) = getCocktailByIdUseCase(idDrink)
 
+    fun searchCocktailsByName(cocktailName: String) {
+        viewModelScope.launch { getCocktailsByNameUseCase(cocktailName)
+            TODO("just test, launch is not ended")
+        }
+    }
+
     init {
         viewModelScope.launch { getCocktailsByNameUseCase("A")
             TODO("just test, launch is not ended")

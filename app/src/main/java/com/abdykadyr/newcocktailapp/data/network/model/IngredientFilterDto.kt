@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class IngredientFilterDto(
 
-    @SerializedName("strstrIngredient1")
+    @SerializedName("strIngredient1")
     @Expose
     val ingredientFilter: String? = null
 )
