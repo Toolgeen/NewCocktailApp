@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
 
-    private const val BASE_URL = "www.thecocktaildb.com/api/json/v1/1"
+    private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 
     const val BASE_COCKTAIL_IMAGE_URL = "https://www.thecocktaildb.com/images/media/drink/"
     const val BASE_INGREDIENT_IMAGE_URL = "https://www.thecocktaildb.com/images/ingredients/"

@@ -28,21 +28,21 @@ interface ApiService {
     @GET(GET_COCKTAIL_BY_ID)
     fun getFullCocktailInfo(
         @Query(QUERY_PARAM_COCKTAIL_ID) idDrink: Int
-    ): Single<CocktailInfo>
+    ): Single<ListOfCocktails>
 
     @GET(GET_INGREDIENT_BY_ID)
     fun getFullIngredientInfo(
         @Query(QUERY_PARAM_INGREDIENT_ID) idIngredient: Int
-    ): Single<IngredientInfo>
+    ): Single<ListOfIngredients>
 
 
     companion object {
 
-        private const val SEARCH_COCKTAILS_BY_FIRST_LETTER = "/search.php?/f="
-        private const val SEARCH_COCKTAIL_BY_NAME = "/search.php?/s="
-        private const val SEARCH_INGREDIENT_BY_NAME = "/search.php?/s="
-        private const val GET_COCKTAIL_BY_ID = "/search.php?/i="
-        private const val GET_INGREDIENT_BY_ID = "/search.php?/iid="
+        private const val SEARCH_COCKTAILS_BY_FIRST_LETTER = "search.php?f="
+        private const val SEARCH_COCKTAIL_BY_NAME = "search.php?s="
+        private const val SEARCH_INGREDIENT_BY_NAME = "search.php?i="
+        private const val GET_COCKTAIL_BY_ID = "lookup.php?i="
+        private const val GET_INGREDIENT_BY_ID = "lookup.php?iid="
 
         private const val QUERY_PARAM_INGREDIENT_NAME = "cocktail_name"
         private const val QUERY_PARAM_COCKTAIL_NAME = "cocktail_name"

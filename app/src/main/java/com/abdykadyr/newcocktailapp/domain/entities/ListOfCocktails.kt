@@ -7,6 +7,6 @@ data class ListOfCocktails(
 
     @SerializedName("drinks")
     @Expose
-    val data: List<CocktailInfo>? = null
+    val listOfCocktails: List<CocktailInfo>? = null
 
 )
