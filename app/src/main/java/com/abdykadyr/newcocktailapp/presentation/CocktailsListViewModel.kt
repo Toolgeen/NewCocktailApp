@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.abdykadyr.newcocktailapp.data.RepositoryImpl
 import com.abdykadyr.newcocktailapp.data.database.AppDatabase
-import com.abdykadyr.newcocktailapp.domain.usecases.GetCocktailsByFirstLetterUseCase
 import com.abdykadyr.newcocktailapp.domain.usecases.GetCocktailsByNameUseCase
 
 class CocktailsListViewModel(application: Application): AndroidViewModel(application) {
@@ -20,8 +19,8 @@ class CocktailsListViewModel(application: Application): AndroidViewModel(applica
         getCocktailsByFirstLetterUseCase(letter)?.let { db.cocktailInfoDAO().insertCocktailList(it) }
     }
 
-    fun getCocktailByName(letter : String) {
-        getCocktailsByFirstLetterUseCase(letter)
+    fun getCocktailByName(name : String) {
+        getCocktailsByNameUseCase(name,db)?.let { db.cocktailInfoDAO().insertCocktailList(it) }
     }
 
     override fun onCleared() {

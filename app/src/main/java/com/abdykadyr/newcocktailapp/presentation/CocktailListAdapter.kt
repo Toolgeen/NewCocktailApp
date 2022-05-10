@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.abdykadyr.newcocktailapp.R
-import com.abdykadyr.newcocktailapp.domain.entities.CocktailInfo
+import com.abdykadyr.newcocktailapp.data.model.CocktailInfoDto
 
 
 class CocktailListAdapter: RecyclerView.Adapter<CocktailListAdapter.CocktailListViewHolder>() {
 
-    var cocktailList: List<CocktailInfo> = listOf()
+    var cocktailListDto: List<CocktailInfoDto> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -33,7 +33,7 @@ class CocktailListAdapter: RecyclerView.Adapter<CocktailListAdapter.CocktailList
     }
 
     override fun onBindViewHolder(holder: CocktailListViewHolder, position: Int) {
-        val cocktail = cocktailList[position]
+        val cocktail = cocktailListDto[position]
         with(holder) {
             tvCocktailName.text = cocktail.strDrink
             tvCategory.text = cocktail.strCategory
@@ -41,7 +41,7 @@ class CocktailListAdapter: RecyclerView.Adapter<CocktailListAdapter.CocktailList
     }
 
     override fun getItemCount(): Int {
-        return cocktailList.size
+        return cocktailListDto.size
     }
 
 }

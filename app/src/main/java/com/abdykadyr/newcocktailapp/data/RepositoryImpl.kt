@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.abdykadyr.newcocktailapp.data.api.ApiFactory
 import com.abdykadyr.newcocktailapp.data.database.AppDatabase
-import com.abdykadyr.newcocktailapp.domain.entities.*
+import com.abdykadyr.newcocktailapp.data.model.*
 import com.abdykadyr.newcocktailapp.domain.repository.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -15,71 +15,72 @@ import java.lang.RuntimeException
 object RepositoryImpl : Repository {
 
     val compositeDisposable = CompositeDisposable()
-    private var listOfCocktails: ListOfCocktails = ListOfCocktails()
-    private lateinit var listOfIngredients: ListOfIngredients
-    private lateinit var listOfIngredientFilters: ListOfIngredientFilters
-    private lateinit var listOfCategoriesFilters: ListOfCategoriesFilters
-    private lateinit var listOfAlcoholicFilters: ListOfAlcoholicFilters
+    private val listOfCocktails = mutableListOf<CocktailInfoDto>()
+    private lateinit var listOfIngredientsContainerDto: ListOfIngredientsContainerDto
+    private lateinit var ingredientFilterContainerDto: IngredientFilterContainerDto
+    private lateinit var categoriesFilterContainerDto: CategoriesFilterContainerDto
+    private lateinit var alcoholicFilterContainerDto: AlcoholicFilterContainerDto
 
-    override fun getCocktailById(idDrink: Int, db : AppDatabase): LiveData<CocktailInfo> {
+    override fun getCocktailById(idDrink: Int, db : AppDatabase): LiveData<CocktailInfoDto> {
         return db.cocktailInfoDAO().getCocktail(idDrink)
     }
 
-    override fun getCocktailsByFirstLetter(firstLetter: String): List<CocktailInfo>? {
+    override fun getCocktailsByFirstLetter(firstLetter: String): List<CocktailInfoDto>? {
         val disposable: Disposable =  ApiFactory.apiService.getCocktailsByFirstLetter(firstLetter)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                it?.let { listOfCocktails = it }
+                it?.let { }
             },{
                 Log.d("TEST_OF_LOADING_DATA", "failure to load data")
             })
         compositeDisposable.add(disposable)
-        return listOfCocktails.listOfCocktails
+        return listOfCocktails
     }
 
-    override fun getCocktailsByName(nameDrink: String): List<CocktailInfo>? {
+    override fun getCocktailsByName(nameDrink: String, db : AppDatabase): List<CocktailInfoDto>? {
 
-        val disposable: Disposable =  ApiFactory.apiService.getCocktailsByName("nameDrink")
+        val disposable: Disposable =  ApiFactory.apiService.getCocktailsByName(nameDrink)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                it?.let { listOfCocktails = it }
+                it?.let { db.cocktailInfoDAO().insertCocktailList(it.listOfCocktailDtos) }
             },{
                 Log.d("TEST_OF_LOADING_DATA", "failure to load data")
             })
         compositeDisposable.add(disposable)
-        return listOfCocktails.listOfCocktails
+        Log.d("TEST_OF_LOADING_DATA", listOfCocktails.toString())
+        return listOfCocktails
 
     }
 
-    override fun getIngredientByName(nameIngredient: String): IngredientInfo {
+    override fun getIngredientByName(nameIngredient: String): IngredientInfoDto {
 
         val disposable: Disposable =  ApiFactory.apiService.getIngredientByName(nameIngredient)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                it?.let { listOfIngredients = it }
+                it?.let { listOfIngredientsContainerDto = it }
             },{
                 Log.d("TEST_OF_LOADING_DATA", "failure to load data")
             })
         compositeDisposable.add(disposable)
-        return listOfIngredients.ingredients?.get(0) ?: throw RuntimeException("getIngredientByName returned null")
+        return listOfIngredientsContainerDto.ingredientDtos?.get(0) ?: throw RuntimeException("getIngredientByName returned null")
     }
 
-    override fun getListOfAlcoholic(alcoholicFilter: AlcoholicFilter): List<AlcoholicFilter> {
+    override fun getListOfAlcoholic(alcoholicFilterDto: AlcoholicFilterDto): List<AlcoholicFilterDto> {
         TODO("Not yet implemented")
     }
 
-    override fun getListOfCategories(categoryFilter: CategoryFilter): List<CategoryFilter> {
+    override fun getListOfCategories(categoryFilterDto: CategoryFilterDto): List<CategoryFilterDto> {
         TODO("Not yet implemented")
     }
 
-    override fun getListOfIngredients(ingredientFilter: IngredientFilter): List<IngredientInfo> {
+    override fun getListOfIngredients(ingredientFilterDto: IngredientFilterDto): List<IngredientInfoDto> {
         TODO("Not yet implemented")
     }
 
-    override fun searchByIngredient(strIngredient: String): List<CocktailInfo> {
+    override fun searchByIngredient(strIngredient: String): List<CocktailInfoDto> {
         TODO("Not yet implemented")
     }
 

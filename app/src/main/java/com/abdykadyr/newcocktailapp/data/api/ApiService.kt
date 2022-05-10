@@ -1,9 +1,7 @@
 package com.abdykadyr.newcocktailapp.data.api
 
-import com.abdykadyr.newcocktailapp.domain.entities.CocktailInfo
-import com.abdykadyr.newcocktailapp.domain.entities.IngredientInfo
-import com.abdykadyr.newcocktailapp.domain.entities.ListOfCocktails
-import com.abdykadyr.newcocktailapp.domain.entities.ListOfIngredients
+import com.abdykadyr.newcocktailapp.data.model.ListOfCocktailsContainerDto
+import com.abdykadyr.newcocktailapp.data.model.ListOfIngredientsContainerDto
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,27 +11,27 @@ interface ApiService {
     @GET(SEARCH_COCKTAIL_BY_NAME)
     fun getCocktailsByName(
         @Query(QUERY_PARAM_COCKTAIL_NAME) cocktailName: String
-    ): Single<ListOfCocktails>
+    ): Single<ListOfCocktailsContainerDto>
 
     @GET(SEARCH_INGREDIENT_BY_NAME)
     fun getIngredientByName(
         @Query(QUERY_PARAM_INGREDIENT_NAME) ingredientName: String
-    ): Single<ListOfIngredients>
+    ): Single<ListOfIngredientsContainerDto>
 
     @GET(SEARCH_COCKTAILS_BY_FIRST_LETTER)
     fun getCocktailsByFirstLetter(
         @Query(QUERY_PARAM_FIRST_LETTER) firstLetter: String
-    ): Single<ListOfCocktails>
+    ): Single<ListOfCocktailsContainerDto>
 
     @GET(GET_COCKTAIL_BY_ID)
     fun getFullCocktailInfo(
         @Query(QUERY_PARAM_COCKTAIL_ID) idDrink: Int
-    ): Single<ListOfCocktails>
+    ): Single<ListOfCocktailsContainerDto>
 
     @GET(GET_INGREDIENT_BY_ID)
     fun getFullIngredientInfo(
         @Query(QUERY_PARAM_INGREDIENT_ID) idIngredient: Int
-    ): Single<ListOfIngredients>
+    ): Single<ListOfIngredientsContainerDto>
 
 
     companion object {

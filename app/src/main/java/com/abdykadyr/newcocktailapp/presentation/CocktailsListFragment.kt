@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.abdykadyr.newcocktailapp.R
 import com.abdykadyr.newcocktailapp.databinding.FragmentCocktailsListBinding
 import java.lang.RuntimeException
 
@@ -39,9 +38,9 @@ class CocktailsListFragment : Fragment() {
         val adapter = CocktailListAdapter()
         binding.rvCocktailList.adapter = adapter
         viewModel = ViewModelProvider(this)[CocktailsListViewModel::class.java]
-        viewModel.getCocktailByFistLetter("")
+        viewModel.getCocktailByName("negroni")
         viewModel.cocktailList.observe(viewLifecycleOwner) {
-            adapter.cocktailList = it
+            adapter.cocktailListDto = it
         }
 
     }
