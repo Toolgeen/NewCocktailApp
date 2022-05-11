@@ -2,5 +2,5 @@ package com.abdykadyr.newcocktailapp.domain.entities
 
 data class CategoryFilter (
 
-    val strCategory: String? = null
+    val strFilter: String? = null
 )

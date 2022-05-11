@@ -91,7 +91,7 @@ class RepositoryImpl(
     }
 
     override suspend fun searchByIngredient(ingredientFilter: IngredientFilter): LiveData<List<CocktailInfo>> {
-        val filter = ingredientFilter.strIngredient
+        val filter = ingredientFilter.strFilter
         if (filter != null) {
             try {
                 val cocktailsByNameDto = apiService.getCocktailsByIngredient(filter)
@@ -107,7 +107,7 @@ class RepositoryImpl(
     }
 
     override suspend fun searchByAlcoholic(alcoholicFilter: AlcoholicFilter): LiveData<List<CocktailInfo>> {
-        val filter = alcoholicFilter.strAlcoholic
+        val filter = alcoholicFilter.strFilter
         if (filter != null) {
             try {
                 val cocktailsByNameDto = apiService.getCocktailsByIngredient(filter)
@@ -123,7 +123,7 @@ class RepositoryImpl(
     }
 
     override suspend fun searchByCategory(categoryFilter: CategoryFilter): LiveData<List<CocktailInfo>> {
-        val filter = categoryFilter.strCategory
+        val filter = categoryFilter.strFilter
         if (filter != null) {
             try {
                 val cocktailsByNameDto = apiService.getCocktailsByIngredient(filter)

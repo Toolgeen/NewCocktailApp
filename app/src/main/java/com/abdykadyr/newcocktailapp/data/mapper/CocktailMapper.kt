@@ -97,21 +97,21 @@ class CocktailMapper {
         dto.alcoholicFilterDtos
 
     fun mapAlcoholicFilterDtoToFilter(dto: AlcoholicFilterDto) = AlcoholicFilter (
-        strAlcoholic = dto.alcoholicFilter
+        strFilter = dto.alcoholicFilter
             )
 
     fun mapCategoriesFilterContainerToFiltersDto(dto: CategoriesFilterContainerDto) =
         dto.categoriesFilterDtos
 
     fun mapCategoryFilterDtoToFilter(dto: CategoryFilterDto) = CategoryFilter (
-        strCategory = dto.strCategory
+        strFilter = dto.strCategory
     )
 
     fun mapIngredientFilterContainerToFiltersDto(dto: IngredientFilterContainerDto) =
         dto.ingredientsFilterDtos
 
     fun mapIngredientFilterDtoToFilter(dto: IngredientFilterDto) = IngredientFilter (
-        strIngredient = dto.ingredientFilter
+        strFilter = dto.ingredientFilter
     )
 
     fun mapListOfCocktailsContainerToListOfCocktailsDto(dto: ListOfCocktailsContainerDto) =

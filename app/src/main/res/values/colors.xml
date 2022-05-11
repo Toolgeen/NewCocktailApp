@@ -12,5 +12,6 @@
     <color name="primary">#F3CA85</color>
     <color name="primary_variant">#E4A843</color>
 
+    <color name="primary_variant_opacity">#86E4A843</color>
 
 </resources>
