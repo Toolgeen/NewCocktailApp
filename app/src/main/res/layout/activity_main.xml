@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity"
     android:id="@+id/main_container"
-    android:name="com.abdykadyr.newcocktailapp.presentation.CocktailsListFragment">
+    android:name="com.abdykadyr.newcocktailapp.presentation.WelcomeScreenFragment">
 
 
 </androidx.fragment.app.FragmentContainerView>

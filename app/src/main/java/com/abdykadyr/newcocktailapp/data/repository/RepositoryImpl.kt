@@ -23,6 +23,8 @@ class RepositoryImpl(
         }
     }
 
+    fun clearDb() { cocktailInfoDao.clearDb() }
+
     override fun loadDataFromDb(): LiveData<List<CocktailInfo>> {
         return Transformations.map(cocktailInfoDao.getCocktailList()) {
             it.map {

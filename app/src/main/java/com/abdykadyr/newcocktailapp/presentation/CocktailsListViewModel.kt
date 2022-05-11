@@ -31,9 +31,6 @@ class CocktailsListViewModel(application: Application): AndroidViewModel(applica
     }
 
     init {
-        viewModelScope.launch { getCocktailsByNameUseCase("A")
-            TODO("just test, launch is not ended")
-        }
         loadDataFromDbUseCase()
     }
 }

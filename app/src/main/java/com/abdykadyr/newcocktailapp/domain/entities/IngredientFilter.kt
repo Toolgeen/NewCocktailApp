@@ -2,6 +2,5 @@ package com.abdykadyr.newcocktailapp.domain.entities
 
 data class IngredientFilter(
 
-    val strFilter: String? = null
-)
-
+    override val strFilter: String? = null
+) : Filter

@@ -1,10 +1,7 @@
 package com.abdykadyr.newcocktailapp.data.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface CocktailInfoDao {
@@ -17,5 +14,9 @@ interface CocktailInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCocktailList(cocktailListDbModel: List<CocktailInfoDbModel>)
+
+
+    @Query("DELETE FROM full_cocktail_list")
+    fun clearDb()
 
 }

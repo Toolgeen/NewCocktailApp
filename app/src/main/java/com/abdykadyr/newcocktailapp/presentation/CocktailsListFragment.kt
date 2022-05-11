@@ -45,6 +45,8 @@ class CocktailsListFragment : Fragment() {
     }
 
     companion object {
-
+        fun newInstance() :CocktailsListFragment {
+            return CocktailsListFragment()
+        }
     }
 }

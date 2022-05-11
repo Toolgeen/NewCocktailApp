@@ -10,7 +10,7 @@
     android:layout_margin="4dp">
 
     <TextView
-        android:id="@+id/filtersMenu"
+        android:id="@+id/tvFiltersMenu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         tools:text="Option"
